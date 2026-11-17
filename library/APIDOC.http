@@ -1,0 +1,69 @@
+
+### USER REGISTRATION API
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username":"johnson",
+    "email":"johnson@gmail.com",
+    "password":"Johnson@123"
+}
+
+### USER LOGIN API
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username":"johnson",
+    "password":"Johnson@123"
+}
+
+### USER PROFILE API
+GET http://127.0.0.1:8000/profile/
+Accept: application/json 
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+
+
+### USER LOGOUT API
+POST http://127.0.0.1:8000/logout/
+Authorization: Token 3f7d200eb2fe1e86350be22fd01c4f6898c0b763
+
+### USER PROFILE API AFTER LOGOUT
+GET http://127.0.0.1:8000/profile/
+Accept: application/json
+Authorization: Token 3f7d200eb2fe1e86350be22fd01c4f6898c0b763
+
+
+### LIBRARIAN DASHBOARD
+GET http://127.0.0.1:8000/librarian-dashboard/
+Accept: application/json
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+
+### MEMBER DASHBOARD
+GET http://127.0.0.1:8000/member-dashboard/
+Accept: application/json
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+
+
+### GET ALL BOOKS
+GET http://127.0.0.1:8000/books/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+
+### ADD NEW BOOK
+POST http://127.0.0.1:8000/books/
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+Content-Type: application/json
+
+  {
+    "id": 1,
+    "title": "Django for Beginners",
+    "author": "William S. Vincent",
+    "isbn": "9781735467207",
+    "publisher": "Independently Published",
+    "published_date": "2022-06-01",
+    "total_copies": 5,
+    "available_copies": 5,
+    "category": 1
+  }
+
+  
