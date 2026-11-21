@@ -2,10 +2,10 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status,generics
-from .serializers import UserRegistrationSerializer,BookSerializer
+from .serializers import UserRegistrationSerializer,BookSerializer,CategorySerializer
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsLibrarian,IsMember,IsLibrarianOrReadOnly
-from .models import Book 
+from .models import Book,Category
 
 # Create your views here.
 
@@ -57,7 +57,36 @@ class MemberDashboardView(APIView):
         },status=status.HTTP_200_OK)
 
 
+# BOOK CRUD
+
 class BookListCreateView(generics.ListCreateAPIView):
     queryset=Book.objects.all()
     serializer_class=BookSerializer
     permission_classes=[IsAuthenticated,IsLibrarianOrReadOnly]
+
+class BookDetailView(generics.RetrieveUpdateAPIView):
+    queryset=Book.objects.all()
+    serializer_class=BookSerializer
+    permission_classes=[IsAuthenticated,IsLibrarianOrReadOnly]
+
+class BookDeleteView(generics.DestroyAPIView):
+    queryset=Book.objects.all()
+    serializer_class=BookSerializer
+    permission_classes=[IsAuthenticated,IsLibrarian]
+
+# CATEGORY CRUD
+
+class CategoryListCreateView(generics.ListCreateAPIView):
+    queryset=Category.objects.all()
+    serializer_class=CategorySerializer
+    permission_classes=[IsAuthenticated,IsLibrarianOrReadOnly]
+
+class CategoryDetailView(generics.RetrieveUpdateAPIView):
+    queryset=Category.objects.all()
+    serializer_class=CategorySerializer
+    permission_classes=[IsAuthenticated,IsLibrarianOrReadOnly]
+
+class CategoryDeleteView(generics.DestroyAPIView):
+    queryset=Category.objects.all()
+    serializer_class=CategorySerializer
+    permission_classes=[IsAuthenticated,IsLibrarian]

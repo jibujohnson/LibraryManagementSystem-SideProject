@@ -37,13 +37,15 @@ Authorization: Token 3f7d200eb2fe1e86350be22fd01c4f6898c0b763
 ### LIBRARIAN DASHBOARD
 GET http://127.0.0.1:8000/librarian-dashboard/
 Accept: application/json
-Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+Authorization: Token 491cee3d040804a0028aa51d7d5697f090eb8cdc
 
 ### MEMBER DASHBOARD
 GET http://127.0.0.1:8000/member-dashboard/
 Accept: application/json
-Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+Authorization: Token 491cee3d040804a0028aa51d7d5697f090eb8cdc
 
+
+                   # BOOK CRUD OPERATIONS          
 
 ### GET ALL BOOKS
 GET http://127.0.0.1:8000/books/
@@ -51,7 +53,7 @@ Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
 
 ### ADD NEW BOOK
 POST http://127.0.0.1:8000/books/
-Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+Authorization: Token 491cee3d040804a0028aa51d7d5697f090eb8cdc
 Content-Type: application/json
 
   {
@@ -66,4 +68,62 @@ Content-Type: application/json
     "category": 1
   }
 
+### RETRIEVE BOOK BY ID
+GET http://127.0.0.1:8000/books/5/
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+
+### UPDATE BOOK DETAILS
+PUT http://127.0.0.1:8000/books/10/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+Content-Type: application/json
+
+{
+  "id": 10,
+  "title": "Django for Beginners - Updated Edition",
+  "author": "William S. Vincent",
+  "isbn": "9781735467207",
+  "publisher": "Independently Published",
+  "published_date": "2022-06-01",
+  "total_copies": 6,
+  "available_copies": 6,
+  "category": 1
+}
+
+### DELETE A BOOK
+DELETE http://127.0.0.1:8000/books/20/delete/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+
+
+                   # CATEGORY CRUD OPERATIONS
   
+### GET ALL CATEGORIES
+GET http://127.0.0.1:8000/categories/
+Authorization: Token 491cee3d040804a0028aa51d7d5697f090eb8cdc
+
+### ADD NEW CATEGORIES
+POST  http://127.0.0.1:8000/categories/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+Content-Type: application/json
+
+{
+  "category_name": "Technology",
+  "description": "Books related to modern Technology, Innovation and Computing."
+}
+
+### RETRIEVE CATEGORY BY ID
+GET  http://127.0.0.1:8000/categories/6/
+Authorization: Token 491cee3d040804a0028aa51d7d5697f090eb8cdc
+
+### UPDATE CATEGORY DETAILS
+PUT http://127.0.0.1:8000/categories/6/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+Content-Type: application/json
+
+{
+  "category_name": "AI & Machine Learning",
+  "description": "Books related to Artificial Intelligence and Machine Learning."
+}
+
+### DELETE A CATEGORY
+DELETE http://127.0.0.1:8000/categories/6/delete/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
