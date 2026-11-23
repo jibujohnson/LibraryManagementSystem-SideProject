@@ -4,9 +4,9 @@ POST http://127.0.0.1:8000/register/
 Content-Type: application/json
 
 {
-    "username":"johnson",
-    "email":"johnson@gmail.com",
-    "password":"Johnson@123"
+    "username":"athul",
+    "email":"athul@gmail.com",
+    "password":"athul@123"
 }
 
 ### USER LOGIN API
@@ -14,8 +14,8 @@ POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
 {
-    "username":"johnson",
-    "password":"Johnson@123"
+    "username":"athul",
+    "password":"athul@123"
 }
 
 ### USER PROFILE API
@@ -69,12 +69,12 @@ Content-Type: application/json
   }
 
 ### RETRIEVE BOOK BY ID
-GET http://127.0.0.1:8000/books/5/
+GET http://127.0.0.1:8000/books/4/
 Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
 
 ### UPDATE BOOK DETAILS
 PUT http://127.0.0.1:8000/books/10/
-Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+Authorization: Token 370a81f6cc13f8af9038e1210e2f6ccd5c418de6
 Content-Type: application/json
 
 {
@@ -126,4 +126,46 @@ Content-Type: application/json
 
 ### DELETE A CATEGORY
 DELETE http://127.0.0.1:8000/categories/6/delete/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+
+
+                    # IMPLEMENT THE BORROW BOOK API
+
+### BORROW A BOOK
+POST http://127.0.0.1:8000/borrow/
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+Content-Type: application/json
+
+{
+  "book":6
+}
+
+### MY BORROWINGS - LIST THE BORROWING RECORDS OF A SPECIFIC USER
+GET http://127.0.0.1:8000/my-borrowings/
+Authorization: Token a5f9652bccf0839ad3e8046be6e86bd82027ddf7
+
+### ALL BORROWINGS - LIBRARIANS CAN VIEW ALL THE BORROWING RECORDS OF EVERY USER
+GET http://127.0.0.1:8000/all-borrowings/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+
+### RETRIEVE THE BORROWING RECORD OF A SPECIFIC BOOK
+# LIBRARIANS CAN VIEW ANY BORROW RECORD BY ID
+GET http://127.0.0.1:8000/borrow/19/
+Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c
+
+
+                    # IMPLEMENT THE RETURN BOOK API
+
+### RETURN A BOOK
+# USERS CAN RETURN THEIR OWN BORROWED BOOKS
+# LIBRARIANS CAN RETURN ANY BOOKS BORROWED BY ANY USERS
+POST http://127.0.0.1:8000/return/22/
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+
+### DISPLAY FINES OF SPECIFIC USER
+GET http://127.0.0.1:8000/my-fines/
+Authorization: Token 7e19d5815aa12dc32e7c2d3ffd0acbb676c9ebb8
+
+### DISPLAY ALL FINES (LIBRARIAN ONLY)
+GET http://127.0.0.1:8000/all-fines/
 Authorization: Token 5063af19f72c23104ddea653ecb7d8e1bada0d8c

@@ -138,3 +138,5 @@ REST_FRAMEWORK={
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+LIBRARY_FINE_PER_DAY = 10
