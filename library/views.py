@@ -265,6 +265,8 @@ class ReturnBookView(generics.GenericAPIView):
             ).data if Fine.objects.filter(borrow_record=borrow_record).exists() else None
         })
 
+# DISPLAY FINES OF SPECIFIC USER (Only the user can view their own fines)
+
 class MyFines(generics.ListAPIView):
     serializer_class=FineSerializer
     permission_classes=[IsAuthenticated,IsMemberOrLibrarian]
@@ -272,6 +274,8 @@ class MyFines(generics.ListAPIView):
         return Fine.objects.filter(
             borrow_record__user=self.request.user
         )
+
+# DISPLAY ALL FINES (LIBRARIAN ONLY)
 
 class AllFineViews(generics.ListAPIView):
     queryset=Fine.objects.all()
